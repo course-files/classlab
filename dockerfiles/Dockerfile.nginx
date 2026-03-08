@@ -1,0 +1,4 @@
+FROM nginx:1.28.1
+
+# Copy frontend into container
+COPY frontend/ /usr/share/nginx/html/
