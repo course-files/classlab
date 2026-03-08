@@ -1,0 +1,10 @@
+services:
+  flask-gunicorn-app:
+    image: servingmlmodels-flask-gunicorn-app
+    expose:
+      - "8000"
+
+  nginx:
+    image: servingmlmodels-nginx
+    depends_on:
+      - flask-gunicorn-app

@@ -1,0 +1,73 @@
+services:
+  flask-gunicorn-app:
+    image: servingmlmodels-flask-gunicorn-app:1.0.0
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile.flask-gunicorn-app
+    restart: always
+
+  nginx:
+    image: servingmlmodels-nginx:1.0.0
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile.nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./container-volumes/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - nginx-certs:/etc/nginx/certs:ro
+      - nginx-frontend:/usr/share/nginx/html:ro
+    restart: always
+
+  # A container used as a lightweight VM for students to practice Linux commands
+  # The alternative is to use an actual VM, but that requires more resources
+  # and setup time.
+  ubuntu-server:
+    image: customized-ubuntu-server:1.0.0
+    build:
+      context: ./dockerfiles/ubuntu
+      dockerfile: Dockerfile.ubuntu
+    environment:
+      ROOT_PASSWORD: ${ROOT_PASSWORD}
+      STUDENT_PASSWORD: ${STUDENT_PASSWORD}
+    hostname: customized-ubuntu-server-smm
+    container_name: customized-ubuntu-server-smm
+    # Keeps standard input (STDIN) open for the container,
+    # even when nothing is actively attached to it.
+    # This maintains the interactive session via bash.
+    stdin_open: true
+    # A TTY provides the terminal interface that makes interactive programs
+    # work correctly. Without it, programs that expect terminal features
+    # (colors, cursor positioning, line editing) will malfunction.
+    tty: true
+    # Port binding can be added if you want to access the container's services (like SSH) from the host machine.
+    ports:
+      - 2222:22
+    volumes:
+      # To store the required data persistently
+      - home-student:/home/student
+
+# Create the folder specified in "device" if it doesn't exist, and ensure it has the correct permissions
+# so that the container can read/write to it without issues.
+volumes:
+  home-student:
+    driver: local # The volume will be stored locally on the host machine
+    driver_opts:
+      type: none # Binds to the path specified in "device" instead of creating a new directory/file on the host
+      o: bind # Confirms that Docker maps a directory/file on the host directly into the container
+      device: ./container-volumes/ubuntu/home-student # The path on the host machine that will be mounted into the container
+
+  nginx-certs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./container-volumes/nginx/certs
+
+  nginx-frontend:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./frontend
