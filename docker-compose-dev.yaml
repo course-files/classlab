@@ -48,15 +48,15 @@ services:
       # To store the required data persistently
       - home-student:/home/student
 
-# Create the folder specified in "device" if it doesn't exist, and ensure it has the correct permissions
+# Create the folder specified in "device" if it does not exist and ensure it has the correct permissions
 # so that the container can read/write to it without issues.
 volumes:
   home-student:
-    driver: local # The volume will be stored locally on the host machine
+    driver: local # The volume will be stored locally in the host machine
     driver_opts:
-      type: none # Binds to the path specified in "device" instead of creating a new directory/file on the host
-      o: bind # Confirms that Docker maps a directory/file on the host directly into the container
-      device: ./container-volumes/ubuntu/home-student # The path on the host machine that will be mounted into the container
+      type: none # Binds to the path specified in "device" instead of creating a new directory/file in the host
+      o: bind # Confirms that Docker maps a directory/file in the host directly into the container
+      device: ./container-volumes/ubuntu/home-student # The path in the host machine that will be mounted into the container
 
   nginx-certs:
     driver: local
