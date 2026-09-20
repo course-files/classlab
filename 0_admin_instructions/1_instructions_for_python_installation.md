@@ -6,18 +6,22 @@ Download the versions you desire from here: [https://www.python.org/downloads/wi
 
 Select the following options (if available):
 
-- Add python.exe to PATH
-![Screenshot 1](https://raw.githubusercontent.com/course-files/classlab/refs/heads/main/assets/images/PythonForWindows-1.png)
+  ![Screenshot 1](https://raw.githubusercontent.com/course-files/classlab/refs/heads/main/assets/images/PythonForWindows-1.png)
 
-- Customize installation
-  - Maintain the defaults for 'Documentation', 'pip', 'tcl/tk and IDLE', and 'Python test suite', i.e., **Enabled**
-  ![Screenshot 2](https://raw.githubusercontent.com/course-files/classlab/refs/heads/main/assets/images/PythonForWindows-2.png)
-  - Maintain the defaults for 'py launcher' and 'for all users', i.e., **Disabled**
+- Add python.exe to PATH- Customize installation
+
+- Maintain the defaults for 'Documentation', 'pip', 'tcl/tk and IDLE', and 'Python test suite', i.e., **Enabled**
+
+![Screenshot 2](https://raw.githubusercontent.com/course-files/classlab/refs/heads/main/assets/images/PythonForWindows-2.png)
+
+- Maintain the defaults for 'py launcher' and 'for all users', i.e., **Disabled**
 
 Under advanced options:
 
 - **Enable** 'Install Python for all users', 'Create shortcuts for installed applications', 'Add Python to environment variables', 'Precompile standard library'
-- Choose a clear path, preferably one without spaces, example, `C:\Python312\` instead of `C:\Program Files\Python312`
+- **[IMPORTANT]** Choose a clear path, preferably one without spaces, example:  
+  `C:\Python312\` **instead of** `C:\Program Files\Python312`
+
 ![Screenshot 3](https://raw.githubusercontent.com/course-files/classlab/refs/heads/main/assets/images/PythonForWindows-3.png)
 
 ## <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" width="40" /> Install Python in Linux

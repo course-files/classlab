@@ -154,13 +154,6 @@ dependencies isolated from the system Python packages.
    - That is why PyCharm may still ask you to configure one. To PyCharm, a
    .venv folder is just another directory until you explicitly say,
    “this is the interpreter I want to use.”
-   - Do the following to set the Python Interpreter if you are using **PyCharm**
-   as your IDE:
-     - Go to File > Settings > Python > Interpreter.
-     - Click Add Interpreter → Add Local Interpreter → Select Existing
-     - Select Python as the Type
-     - For the Python path: Browse to your `.venv/bin/python` (on **Linux/Mac**) or `.venv\Scripts\python.exe` (on **Windows**).
-     - Select it and apply it.
 
 3. Activate the virtual environment through your chosen IDE.
 
@@ -186,7 +179,7 @@ dependencies isolated from the system Python packages.
     - [base.txt](../requirements/base.txt): Defines the fundamental packages that the code in the repository needs to be installed for it to run. It is: Environment-agnostic, developer-curated, stable, and minimal.
     - [dev.txt](../requirements/dev.txt): Defines what a developer needs to work productively and safely. It can include linters, formatters, test frameworks, and interactive tools. It should not include platform-specific constraints or deployment-only dependencies.
     - [colab.txt](../requirements/colab.txt): It is platform-specific for Google Colab. It specifies the adjustments required when you are running the notebook in Colab, e.g., packages that are not included in Colab by default, and compatibility pins to avoid breaking Colab.
-    - [prod.txt](../requirements/prod.txt): Defines what must be installed in a production environment. It includes runtime frameworks (TensorFlow).
+    - [prod.txt](../requirements/prod.txt): Defines what must be installed in a production environment. It includes runtime frameworks (e.g., TensorFlow).
     - [constraints.txt](../requirements/constraints.txt): Defines the exact versions of packages to ensure compatibility and reproducibility across environments. It is used as a constraint file to pin versions when installing from dev.txt or prod.txt.
     - **Governing Rule:** If the application code imports it to run, it belongs in base.txt. If only a developer uses it to think, test, or explore, it belongs in dev.txt.
 
@@ -243,7 +236,7 @@ instructions to set it up.*
 3. Navigate to the project's root folder using the MSYS2 terminal.
 
 ```shell
-tree -I ".venv|__pycache__|sandbox|lab_submission_ANSWERS|*.bak"
+tree -I ".venv|__pycache__|sandbox|lab_submission_ANSWERS|container-volumes|*.bak"
 ```
 
 ## Creating a `requirements.txt` File
