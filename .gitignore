@@ -215,3 +215,5 @@ __marimo__/
 /.devcontainer
 /github-organization/github-cleanup-*
 /github-organization/old
+/github-organization/github-semester-setup-*
+roster.csv
