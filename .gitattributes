@@ -4,6 +4,8 @@
 # `* text=auto` – Specifies that all files should have their line endings
 # normalized to the platform default.
 
-# `*.sh text eol=lf` – Ensures that all shell script files (*.sh) are checked out with "LF"(Unix-style) line endings, regardless of the platform (text eol=lf).
+# `*.sh text eol=lf` – Ensures that all shell script files (*.sh) are checked
+# out with "LF"(Unix-style) line endings, regardless of the
+# platform (text eol=lf).
 * text=auto
 *.sh text eol=lf
